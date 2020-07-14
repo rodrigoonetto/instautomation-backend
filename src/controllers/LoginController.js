@@ -21,9 +21,11 @@ module.exports = {
 				const userResponse = {
 					_id: user._id,
 					email: user.email,
-					firstName: user.firstName,
-					instagram: user.instagram
 				}
+				await User.findByIdAndUpdate(email,{
+					pass: password
+				})
+				
 				return res.json({
 					user_id: userResponse._id,
 					user_name: userResponse.firstName

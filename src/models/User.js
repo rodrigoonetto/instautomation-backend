@@ -7,7 +7,8 @@ const UserSchema = new mongoose.Schema({
 	email: String,
 	usersLimit: Number,
 	delay: Number,	
-	startingFrom: Number
+	startingFrom: Number,
+	exceptions: [String]
 })
 
 module.exports = mongoose.model('User', UserSchema)
