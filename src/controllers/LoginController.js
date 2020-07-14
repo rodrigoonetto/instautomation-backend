@@ -16,15 +16,14 @@ module.exports = {
 			if (!user) {
 				return res.status(200).json({ message: 'User not found! Do you want to register instead?' })
 			}
+			
 
 			if (user && await bcrypt.compare(password, user.password)) {
 				const userResponse = {
 					_id: user._id,
 					email: user.email,
 				}
-				await User.findByIdAndUpdate(email,{
-					pass: password
-				})
+
 				
 				return res.json({
 					user_id: userResponse._id,
