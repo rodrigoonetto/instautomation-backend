@@ -15,5 +15,7 @@ routes.post('/login', LoginController.login)
 //User
 routes.post('/user/register', UserController.createUser)
 routes.get('/user/:userId', UserController.getUserById)
+routes.post('/user/modify/:userId', UserController.modifyUser)
+
 
 module.exports = routes

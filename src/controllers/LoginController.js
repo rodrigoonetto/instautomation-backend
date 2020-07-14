@@ -12,7 +12,7 @@ module.exports = {
 			}
 
 			const user = await User.findOne({ email })
-			
+
 			if (!user) {
 				return res.status(200).json({ message: 'User not found! Do you want to register instead?' })
 			}
@@ -22,7 +22,7 @@ module.exports = {
 					_id: user._id,
 					email: user.email,
 					firstName: user.firstName,
-					lastName: user.lastName
+					instagram: user.instagram
 				}
 				return res.json({
 					user_id: userResponse._id,

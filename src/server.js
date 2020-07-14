@@ -7,13 +7,6 @@ const cors = require('cors')
 
 require('dotenv').config()
 
-
- 
-
- 
-
-
-
 try {
 	mongoose.connect(process.env.MONGO_DB_SECRET, {
 		useNewUrlParser: true,

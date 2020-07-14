@@ -7,7 +7,7 @@ module.exports = {
 		try {
 			const email = req.body.email
 			const firstName = req.body.firstName
-			const lastName = req.body.lastName
+			const instagram = req.body.instagram
 			const password = req.body.password
 			
 			const existentUser = await User.findOne({ email })
@@ -17,7 +17,7 @@ module.exports = {
 				const userResponse = await User.create({
 					email: email,
 					firstName: firstName,
-					lastName: lastName,
+					instagram: instagram,
 					password: hashPassword,
 				})
 				const user_id = (userResponse._id)
@@ -50,5 +50,38 @@ module.exports = {
 					'User ID does not exist, do you want to register instead?',
 			})
 		}
+	},
+
+	async modifyUser(req, res) {
+		const { userId } = req.params
+		const firstName = req.body.firstName
+		const instagram = req.body.instagram
+		const usersLimit = req.body.usersLimit
+		const delay = req.body.delayInSeconds	
+		const startingFrom = req.body.startingFrom
+		const password = req.body.password
+		const hashPassword = await bcrypt.hash(password, 10)
+		
+		try {
+				const userResponse = await User.findByIdAndUpdate(userId,{
+					firstName: firstName,
+					instagram: instagram,
+					usersLimit: usersLimit,
+					delay: delay,
+					startingFrom: startingFrom
+				})
+				if(password!=""){
+				const pwdResponse = await User.findByIdAndUpdate(userId,{
+					password: hashPassword
+				})}
+				
+				return res.json({ "message":"Updated succesfully!"})
+		} catch(err) {
+				throw Error(`Error while updating data  ${err}`)
+		}
 	}
+	
+
+
+	
 }
