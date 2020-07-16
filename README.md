@@ -1,4 +1,4 @@
-# instautomation-backend
+# instautomated-backend
 Instautomated! is an app to help with automatic follows and unfollows on Instagram. It´s already deployed in Heroku: https://instautomated.herokuapp.com/
 
 It was developed using the following stack:
