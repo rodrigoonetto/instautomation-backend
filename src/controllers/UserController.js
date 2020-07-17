@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/User')
+const moment = require('moment')
 
 
 module.exports = {
@@ -79,7 +80,39 @@ module.exports = {
 		} catch(err) {
 				throw Error(`Error while updating data  ${err}`)
 		}
-	}
+	},
+	async addUnfollowException(req, res) {
+		const { userId } = req.params
+		const objUnfollowUser = {'user': req.body.usertoAdd , 'date': Date.now() }
+	
+
+		
+		try {
+				const Response = await User.findByIdAndUpdate(userId,{
+					$push: { unfollowExceptions: objUnfollowUser}
+				})
+				return res.json({ "message": "User exception added succesfully!"})
+		} catch(err) {
+				throw Error(`Error while updating data  ${err}`)
+		}
+	},
+	async deleteUnfollowException(req, res) {
+		const { userId } = req.params
+		const usertoDelete = req.body.usertoDelete
+		console.log(usertoDelete)
+
+		
+		try {
+				const Response = await User.findByIdAndUpdate(userId,{
+					$pull: { unfollowExceptions: {user: usertoDelete}}
+				})
+				
+				return res.json({ "message": "User exception deleted succesfully!"})
+		} catch(err) {
+				throw Error(`Error while updating data  ${err}`)
+		}
+	},
+
 	
 
 

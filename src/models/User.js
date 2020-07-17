@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
 	usersLimit: Number,
 	delay: Number,	
 	startingFrom: Number,
-	exceptions: [String]
+	unfollowExceptions: [{ user: 'string', date: 'number' }]
 })
 
 module.exports = mongoose.model('User', UserSchema)
