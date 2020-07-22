@@ -5,7 +5,7 @@ const routes = express.Router()
 const UserController = require('./controllers/UserController')
 const LoginController = require('./controllers/LoginController')
 
-routes.get('/test', function (req, res) {
+routes.get('/status', function (req, res) {
     res.send('Server up and running')
   })
 
