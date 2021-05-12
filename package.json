@@ -11,7 +11,7 @@
     "moment": "^2.27.0",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.22",
-    "nodemailer": "^6.4.10",
+    "nodemailer": "^6.4.16",
     "nodemon": "^2.0.4"
   },
   "devDependencies": {},
